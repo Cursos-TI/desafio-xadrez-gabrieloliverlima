@@ -1,70 +1,64 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+// Função recursiva para mover a Torre
+void moverTorre(int passos) {
+    if (passos == 0) return;
+    printf("Direita\n");
+    moverTorre(passos - 1);
+}
+
+// Função recursiva para mover o Bispo
+void moverBispo(int passos) {
+    if (passos == 0) return;
+    printf("Cima, Direita\n");
+    moverBispo(passos - 1);
+}
+
+// Função recursiva para mover a Rainha
+void moverRainha(int passos) {
+    if (passos == 0) return;
+    printf("Esquerda\n");
+    moverRainha(passos - 1);
+}
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Movimento da Torre: 5 casas para a direita (usando for)
+    // Movimento da Torre (5 casas para a direita)
     printf("Movimento da Torre:\n");
-    for (int i = 1; i <= 5; i++) {
-        printf("Direita (%d)\n", i);
-    }
-    
-    // Movimento do Bispo: 5 casas na diagonal para cima e à direita (usando while)
-    printf("\nMovimento do Bispo:\n");
-    int casasBispo = 1;
-    while (casasBispo <= 5) {
-        printf("Cima Direita (%d)\n", casasBispo);
-        casasBispo++;
-    }
-    
-    // Movimento da Rainha: 8 casas para a esquerda (usando do-while)
-    printf("\nMovimento da Rainha:\n");
-    int casasRainha = 1;
-    do {
-        printf("Esquerda (%d)\n", casasRainha);
-        casasRainha++;
-    } while (casasRainha <= 8);
-    
-    
-
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-   // Movimento do Cavalo (2 casas para baixo e 1 para a esquerda)
-    printf("Movimento do Cavalo:\n");
-    int moveCount = 1;
-    while (moveCount--) {
-        for (int i = 0; i < 2; i++) {
-            printf("Cima\n");
-        }
-        printf("Direita\n");
-    }
+    moverTorre(5);
     printf("\n");
 
+    // Movimento do Bispo (5 casas na diagonal superior direita)
+    printf("Movimento do Bispo:\n");
+    moverBispo(5);
+    printf("\n");
 
+    // Movimento da Rainha (8 casas para a esquerda)
+    printf("Movimento da Rainha:\n");
+    moverRainha(8);
+    printf("\n");
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
+    // Movimento do Cavalo (2 casas para cima e 1 para a direita)
+    printf("Movimento do Cavalo:\n");
+    int moveCount = 0;
+    while (moveCount < 1) {
+        for (int i = 0; i < 2; i++) {
+            printf("Cima\n");
+            if (i == 1) continue; // Apenas para mostrar o uso do continue
+        }
+        printf("Direita\n");
+        moveCount++;
+    }
+    printf("\n");
+    
+    // Implementação alternativa do Bispo com loops aninhados
+    printf("Movimento alternativo do Bispo:\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 1; j++) {
+            printf("Cima, Direita\n");
+            if (i == 3) break; // Apenas para demonstrar o uso do break
+        }
+    }
+    printf("\n");
+    
     return 0;
 }
